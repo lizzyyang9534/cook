@@ -66,7 +66,7 @@ angular.module('starter.homeController', [])
   ionicMaterialInk.displayEffect();
 })
 
-.controller('HomeCtrl', function($scope, $state, $http, $localstorage, $ionicPopup, $ionicPopover, ionicMaterialInk) {
+.controller('HomeCtrl', function($scope, $state, $http, $localstorage, $ionicPopup, ionicMaterialInk) {
   $http.post(serverIP + "/cook/api/getRecipe.php", {
     'member_id': user_data.member_id
   })

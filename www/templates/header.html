@@ -11,7 +11,7 @@
 <script id="my-popover.html" type="text/ng-template">
   <ion-popover-view>
     <ion-content>
-      <div class="list">
+      <div class="list" ng-click="popover.hide()">
         <a class="item" ui-sref="app.recipe_edit.info">Edit</a>
         <a class="item">Delete</a>
       </div>

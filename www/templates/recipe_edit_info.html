@@ -10,15 +10,14 @@
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Title</span>
-        <input type="text" placeholder="Sushi">
+        <input type="text" placeholder="Sushi" value="{{ recipe.recipe_title }}">
       </label>
       <label class="item item-input item-select">
         <div class="input-label">
           Category
         </div>
         <select>
-          <option>Chinese</option>
-          <option selected>Japanese</option>
+          <option ng-repeat="category in category_list">{{ category }}</option>
         </select>
       </label>
     </div>

@@ -3,13 +3,13 @@
     <ion-nav-view name="recipe"></ion-nav-view>
   </ion-content>
   <div class="tabs tabs-calm tabs-icon-left hide-on-keyboard-open">
-    <a class="tab-item" ui-sref="app.recipe_edit.info">
+    <a class="tab-item" ui-sref="app.recipe_edit.info" ng-class="{'active': $state.includes('app.recipe_edit.info')}">
       <i class="icon ion-information-circled"></i> Info
     </a>
-    <a class="tab-item" ui-sref="app.recipe_edit.ingredients">
+    <a class="tab-item" ui-sref="app.recipe_edit.ingredients" ng-class="{'active': $state.includes('app.recipe_edit.ingredients')}">
       <i class="icon ion-star"></i> Ingredient
     </a>
-    <a class="tab-item" ui-sref="app.recipe_edit.steps">
+    <a class="tab-item" ui-sref="app.recipe_edit.steps" ng-class="{'active': $state.includes('app.recipe_edit.steps')}">
       <i class="icon ion-gear-a"></i> Steps
     </a>
   </div>
