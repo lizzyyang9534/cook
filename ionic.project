@@ -1,4 +1,10 @@
 {
   "name": "cook",
-  "app_id": ""
+  "app_id": "6b3e75b2",
+  "proxies": [
+    {
+      "path": "/cook/api/",
+      "proxyUrl": "http://140.123.175.102:8080/cook/api/"
+    }
+  ]
 }

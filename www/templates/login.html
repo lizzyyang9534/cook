@@ -1,11 +1,11 @@
-<ion-view hide-nav-bar="true">
+<ion-view hide-nav-bar="true" ng-controller="LoginCtrl">
   <ion-content class="login" scroll="false">
     <div>
       <div class="logo_login"> </div>
       <form name="login_form">
         <label class="item item-input border-0 padding-6-10per">
           <div class="login_input_border">
-            <input class="login_input" type="text" name="username" ng-model="loginData.username" placeholder="Account" required>
+            <input class="login_input" type="email" name="username" ng-model="loginData.username" placeholder="Account" required>
           </div>
         </label>
         <label class="item item-input border-0 padding-6-10per">

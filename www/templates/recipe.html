@@ -1,4 +1,4 @@
-<ion-view title="">
+<ion-view title="Recipe" ng-controller="RecipeCtrl">
 	<ion-content>
     <!--<ion-refresher on-refresh="doRefresh()" pulling-text="重新整理"></ion-refresher>-->
 			<!-- 顯示圖片 -->
@@ -12,7 +12,7 @@
 		<div class="list">
 			<!-- 標題、種類 -->
 			<div class="item item-divider">
-				Title
+				{{ recipe.recipe_title }}
 			</div>
 			<div class="item item-divider">
 				Category

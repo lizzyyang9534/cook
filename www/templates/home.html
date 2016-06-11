@@ -7,22 +7,13 @@
       </label>
     </div>
     <div class="list">
-      <a class="item item-thumbnail-left home-menu" ui-sref="app.recipe">
-        <img src="img/material2.jpg">
-        <h2>Ionic Framework</h2>
-        <p>A mobile development revolution</p>
-      </a>
-      <a class="item item-thumbnail-left home-menu">
-        <img src="img/material1.jpg">
-        <h2>Material Design</h2>
-        <p>A visual language of design &amp; innovation</p>
-      </a>
-      <a class="item item-thumbnail-left home-menu">
-        <img src="img/material4.jpg">
-        <h2>Ionic Material</h2>
-        <p>Their love-child</p>
+      <a id="recipe{{ recipe.recipe_id }}" class="item item-thumbnail-left home-menu" ui-sref="app.recipe" ng-repeat="recipe in recipe_list" ng-click="getRecipeId()">
+        <img src="{{ recipe.recipe_image }}"/>
+        <span style="display:none">{{ recipe.recipe_id }}</span>
+        <h2>{{ recipe.recipe_title }}</h2>
+        <p>{{ recipe.recipe_content }}</p>
       </a>
     </div>
   </ion-content>
-  <button class="button button-fab button-fab-bottom-right ink-dark button-calm icon ion-plus" ng-click=""></button>
+  <button class="button button-fab button-fab-bottom-right ink-dark button-calm icon ion-plus hide-on-keyboard-open" ng-click=""></button>
 </ion-view>
