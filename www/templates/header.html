@@ -1,10 +1,10 @@
-<ion-nav-bar class="bar-calm">
+<ion-nav-bar class="bar-stable">
   <ion-nav-buttons side="left">
-    <button class="button button-clear button-icon ion-android-arrow-back" ng-click="myGoBack()" ng-hide="$state.includes('app.home') == true"></button>
+    <button style="color: grey" class="button button-clear button-icon ion-android-arrow-back" ng-click="myGoBack()" ng-hide="$state.includes('app.home') == true"></button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
-    <button class="button button-clear button-icon ion-android-more-vertical" ng-click="popover.show($event)" ng-show="$state.includes('app.recipe')"></button>
-    <button class="button button-clear" ng-click="" ng-hide="$state.includes('app.home') == true || $state.includes('app.recipe') == true">Save</button>
+    <button style="color: grey" class="button button-clear button-icon ion-android-more-vertical" ng-click="popover.show($event)" ng-show="$state.includes('app.recipe')"></button>
+    <button style="color: grey" class="button button-clear" ng-controller="RecipeCtrl" ng-click="saveRecipe()" ng-hide="$state.includes('app.home') == true || $state.includes('app.recipe') == true || $state.includes('app.recipe_add') == true">Save</button>
   </ion-nav-buttons>
 </ion-nav-bar>
 <ion-nav-view name="main"></ion-nav-view>

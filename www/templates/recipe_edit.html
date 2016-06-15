@@ -1,16 +1,31 @@
-<ion-view view-title="Recipe Edit" ng-controller="RecipeEditCtrl">
-  <ion-content>
+<ion-view view-title="Recipe Edit" ng-controller="RecipeCtrl">
+  <!--<ion-content>
     <ion-nav-view name="recipe"></ion-nav-view>
   </ion-content>
-  <div class="tabs tabs-calm tabs-icon-left hide-on-keyboard-open">
-    <a class="tab-item" ui-sref="app.recipe_edit.info" ng-class="{'active': $state.includes('app.recipe_edit.info')}">
-      <i class="icon ion-information-circled"></i> Info
+  <div class="tabs tabs-stable tabs-icon-left hide-on-keyboard-open">
+    <a style="color: grey" class="tab-item" ui-sref="app.recipe_edit.info" ng-class="{'active': $state.includes('app.recipe_edit.info')}">
+      <i style="color: grey" class="icon ion-information-circled"></i> Info
     </a>
-    <a class="tab-item" ui-sref="app.recipe_edit.ingredients" ng-class="{'active': $state.includes('app.recipe_edit.ingredients')}">
-      <i class="icon ion-star"></i> Ingredient
+    <a style="color: grey" class="tab-item" ui-sref="app.recipe_edit.ingredients" ng-class="{'active': $state.includes('app.recipe_edit.ingredients')}">
+      <i style="color: grey" class="icon ion-star"></i> Ingredient
     </a>
-    <a class="tab-item" ui-sref="app.recipe_edit.steps" ng-class="{'active': $state.includes('app.recipe_edit.steps')}">
-      <i class="icon ion-gear-a"></i> Steps
+    <a style="color: grey" class="tab-item" ui-sref="app.recipe_edit.steps" ng-class="{'active': $state.includes('app.recipe_edit.steps')}">
+      <i style="color: grey" class="icon ion-gear-a"></i> Steps
     </a>
-  </div>
+  </div>-->
+  <ion-tabs class="tabs-stable tabs-icon-left">
+
+    <ion-tab title="Info" icon="ion-information-circled" ng-click="editRecipe('info')">
+      <ion-nav-view name="info-tab"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Ingredients" icon="ion-star" ng-click="editRecipe('ingredients')">
+      <ion-nav-view name="ingredients-tab"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Steps" icon="ion-gear-a" ng-click="editRecipe('steps')">
+      <ion-nav-view name="steps-tab"></ion-nav-view>
+    </ion-tab>
+
+  </ion-tabs>
 </ion-view>

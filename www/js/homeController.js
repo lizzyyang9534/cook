@@ -3,11 +3,12 @@ angular.module('starter.homeController', [])
 .controller('HeaderCtrl', function($scope, $state, $localstorage, $ionicPopup, $ionicPopover, ionicMaterialInk, API) {
   $scope.$state = $state;
   user_data = $localstorage.getObject('user_data');
+
+  if (user_data.member_id == null)
+    $state.go("login");
+
   recipe_data = $localstorage.getObject('recipe_data');
   current_recipe_id = 0;
-
-  if(user_data.member_id == null)
-    $state.go("login");
 
   //api server ip
   if (ionic.Platform.isAndroid() || ionic.Platform.isIOS()) {
@@ -17,7 +18,7 @@ angular.module('starter.homeController', [])
   }
 
   $scope.myGoBack = function() {
-    if ($state.includes('app.recipe')) {
+    if ($state.includes('app.recipe') || $state.includes('app.recipe_add')) {
       $state.go('app.home')
     } else {
       var confirmPopup = $ionicPopup.confirm({
@@ -67,18 +68,23 @@ angular.module('starter.homeController', [])
 })
 
 .controller('HomeCtrl', function($scope, $state, $http, $localstorage, $ionicPopup, ionicMaterialInk) {
-  $http.post(serverIP + "/cook/api/getRecipe.php", {
-    'member_id': user_data.member_id
-  })
-    .success(function(data, status, headers, config) {
-      $scope.recipe_list = data;
-      recipe_data = data;
-      $localstorage.setObject('recipe_data', data);
-      //console.log(data);
-    })
+  $scope.initialize = function() {
+    $http.post(serverIP + "/cook/api/getRecipe.php", {
+        'member_id': user_data.member_id
+      })
+      .success(function(data, status, headers, config) {
+        $scope.recipe_list = data;
+        recipe_data = data;
+        $localstorage.setObject('recipe_data', data);
+        //console.log(data);
+      })
+    $scope.$broadcast('scroll.refreshComplete');
+  }
 
-  $scope.getRecipeId = function(){
+  $scope.getRecipeId = function() {
     current_recipe_id = $("#" + event.currentTarget.id + " span").text();
+    $state.go("app.recipe");
+    console.log(current_recipe_id);
   }
   ionicMaterialInk.displayEffect();
 })

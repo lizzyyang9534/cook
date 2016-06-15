@@ -1,0 +1,51 @@
+<ion-view title="New Recipe" ng-controller="RecipeAddCtrl">
+  <ion-content>
+    <div class="recipe_edit_image">
+      <div class="recipe_edit_image_text">
+        <i class="icon ion-plus font-size-4em"></i>
+        <div>Tap Here To Add A Photo</div>
+        <span style="display:none" ng-model="recipe_add.recipe_image"></span>
+      </div>
+    </div>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label font-size-18">Title</span>
+        <input type="text" placeholder="Sushi" ng-model="recipe_add.recipe_title">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label font-size-18">
+          Category
+        </div>
+        <select ng-model="recipe_add.recipe_category">
+          <option ng-repeat="category in category_list" value="{{ category.category_id }}">{{ category.category_name }}</option>
+        </select>
+      </label>
+      <label class="item item-input">
+        <div class="input-label font-size-18">
+          Ingredients
+        </div>
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Eggs?" ng-model="recipe_add.recipe_ingredients[0].name">
+        <input type="text" placeholder="How Many?" ng-model="recipe_add.recipe_ingredients[0].amount">
+      </label>
+			<label class="item item-input">
+        <input type="text" placeholder="Butter?" ng-model="recipe_add.recipe_ingredients[1].name">
+				<input type="text" placeholder="How Many?" ng-model="recipe_add.recipe_ingredients[1].amount">
+			</label>
+			<label class="item item-input">
+        <input type="text" placeholder="Milk?" ng-model="recipe_add.recipe_ingredients[2].name">
+				<input type="text" placeholder="How Many?" ng-model="recipe_add.recipe_ingredients[2].amount">
+      </label>
+      <label class="item item-input">
+        <div class="input-label font-size-18">
+          Steps
+        </div>
+      </label>
+      <label class="item item-input">
+  			<textarea rows="10" placeholder="How to make this dish?" ng-model="recipe_add.recipe_content"></textarea>
+  		</label>
+    </div>
+    <input type="button" value="Submit" class="button button-dark login_button font-size-22 margin-bottom-20" ng-click="submitRecipe()">
+  </ion-content>
+</ion-view>

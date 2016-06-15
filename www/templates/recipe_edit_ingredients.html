@@ -1,16 +1,20 @@
-<ion-view view-title="Recipe Edit" ng-controller="RecipeEditIngredientsCtrl">
-	<ion-content>
+<ion-view view-title="Recipe Edit" ng-controller="RecipeCtrl">
+	<ion-content ng-init="initialize()">
 		<div class="list">
-      <label class="item item-input">
+			<label class="item item-input" ng-repeat="ingredient in ingredient_list">
+				<input type="text" value="{{ ingredient[0] }}">
+				<input type="text" style="text-align: right" value="{{ ingredient[1] }}">
+			</label>
+			<label class="item item-input" ng-show="recipe.recipe_ingredients == null">
         <input type="text" placeholder="Eggs?">
       </label>
-			<label class="item item-input">
+			<label class="item item-input" ng-show="recipe.recipe_ingredients == null">
 				<input type="text" placeholder="Butter?">
 			</label>
-			<label class="item item-input">
+			<label class="item item-input" ng-show="recipe.recipe_ingredients == null">
 				<input type="text" placeholder="Milk?">
 			</label>
     </div>
-		<button style="bottom:10%" class="button button-fab button-fab-bottom-right ink-dark button-calm icon ion-plus" ng-click=""></button>
+		<button style="bottom:10%" class="button button-fab button-fab-bottom-right ink-dark button-dark icon ion-plus" ng-click=""></button>
   </ion-content>
 </ion-view>

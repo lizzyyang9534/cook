@@ -1,37 +1,39 @@
 <ion-view title="Recipe" ng-controller="RecipeCtrl">
-	<ion-content>
-    <!--<ion-refresher on-refresh="doRefresh()" pulling-text="重新整理"></ion-refresher>-->
-			<!-- 顯示圖片 -->
-			<div class="recipe_edit_image">
-				<div style="height:45%"></div>
-				<div class="recipe_edit_image_text">
-					<div>Yummy</div>
-				</div>
-			</div>
+	<ion-content ng-init="initialize()">
+		<!--<ion-refresher on-refresh="doRefresh()" pulling-text="重新整理"></ion-refresher>-->
+		<!-- 顯示圖片 -->
+		<div>
+			<img class="recipe_edit_image" src="{{ recipe.recipe_image }}">
+		</div>
 
 		<div class="list">
 			<!-- 標題、種類 -->
-			<div class="item item-divider">
+			<div class="item item-divider font-size-25">
 				{{ recipe.recipe_title }}
 			</div>
-			<div class="item item-divider">
+			<div class="item item-divider font-size-18">
 				Category
 			</div>
-			<span>{{ recipe.recipe_category }}</span>
+			<div style="margin: 5%">{{ recipe.recipe_category }}</div>
 			<!-- 材料、步驟 -->
-			<div class="item item-divider">
-        Ingredients
-      </div>
-			<label class="item item-input">
-				<span class="input-label">材料列表</span> <!--{{account}}-->
+			<div class="item item-divider font-size-18">
+				Ingredients
+			</div>
+			<label class="item item-input" ng-repeat="ingredient in ingredient_list">
+				<span class="input-label float-left">{{ ingredient[0] }}</span>
+				<span class="input-label text-align-right float-right">{{ ingredient[1] }}</span>
 			</label>
-			<div class="item item-divider">
-        Steps
-      </div>
-      <label class="item item-input">
-        <span class="input-label">料理步驟</span> <!--{{account}}-->
-      </label>
-			<div class="white-space-pre">{{ recipe.recipe_content }}</div>
-    </div>
-  </ion-content>
+			<label class="item item-input">
+				<span class="input-label"></span>
+				<!--{{account}}-->
+			</label>
+			<div class="item item-divider font-size-18">
+				Steps
+			</div>
+			<!--<label class="item item-input">
+        <span class="input-label"></span>
+      </label>-->
+			<div style="margin: 5%" class="white-space-pre">{{ recipe.recipe_content }}</div>
+		</div>
+	</ion-content>
 </ion-view>

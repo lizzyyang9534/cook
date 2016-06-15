@@ -31,7 +31,25 @@ function getCategory(){
 
 function getRecipe($member_id){
 	$dbh = connectDB();
-	$sql = "select * from recipe where member_id = :member_id;";
+	$sql = "select * from recipe r,category c where r.member_id = :member_id and r.recipe_category = c.category_id;";
+	$statement = $dbh -> prepare($sql);
+	$statement -> bindParam(':member_id', $member_id, PDO::PARAM_INT);
+	$statement -> execute();
+	return $statement;
+}
+
+function getIngredient($recipe_id){
+	$dbh = connectDB();
+	$sql = "select ingredient_name,ingredient_amount from ingredient where recipe_id = :recipe_id;";
+	$statement = $dbh -> prepare($sql);
+	$statement -> bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
+	$statement -> execute();
+	return $statement;
+}
+
+function getLastRecipe($member_id){
+	$dbh = connectDB();
+	$sql = "select recipe_id from recipe where member_id = :member_id order by recipe_id DESC limit 1";
 	$statement = $dbh -> prepare($sql);
 	$statement -> bindParam(':member_id', $member_id, PDO::PARAM_INT);
 	$statement -> execute();

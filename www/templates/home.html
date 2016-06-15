@@ -1,5 +1,6 @@
 <ion-view view-title="COOK" ng-controller="HomeCtrl">
-  <ion-content class="home">
+  <ion-content class="home" ng-init="initialize()">
+    <ion-refresher on-refresh="initialize()" pulling-text="Refresh"></ion-refresher>
     <div class="bar bar-header item-input-inset padding-0-5per">
       <label class="item-input-wrapper ">
         <i class="icon ion-ios-search placeholder-icon"></i>
@@ -7,7 +8,7 @@
       </label>
     </div>
     <div class="list">
-      <a id="recipe{{ recipe.recipe_id }}" class="item item-thumbnail-left home-menu" ui-sref="app.recipe" ng-repeat="recipe in recipe_list" ng-click="getRecipeId()">
+      <a id="recipe{{ recipe.recipe_id }}" class="item item-thumbnail-left home-menu" ng-repeat="recipe in recipe_list" ng-click="getRecipeId()">
         <img src="{{ recipe.recipe_image }}"/>
         <span style="display:none">{{ recipe.recipe_id }}</span>
         <h2>{{ recipe.recipe_title }}</h2>
@@ -15,5 +16,5 @@
       </a>
     </div>
   </ion-content>
-  <button class="button button-fab button-fab-bottom-right ink-dark button-calm icon ion-plus hide-on-keyboard-open" ng-click=""></button>
+  <button class="button button-fab button-fab-bottom-right ink-dark button-dark icon ion-plus hide-on-keyboard-open" ui-sref="app.recipe_add"></button>
 </ion-view>

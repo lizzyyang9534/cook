@@ -1,5 +1,5 @@
-<ion-view view-title="Recipe Edit" ng-controller="RecipeEditStepsCtrl">
-	<ion-content>
+<ion-view view-title="Recipe Edit" ng-controller="RecipeCtrl">
+	<ion-content ng-init="initialize()">
 		<label class="item item-input">
 			<textarea rows="30" placeholder="How to make this dish?" ng-model="recipe.recipe_content"></textarea>
 		</label>
