@@ -22,7 +22,7 @@ try{
 		$result1 = getIngredient($recipe_id);
 		while ($rowResult1 = $result1 -> fetch()) {
 			$ingredient = array();
-			array_push($ingredient, $rowResult1["ingredient_name"], $rowResult1["ingredient_amount"]);
+			array_push($ingredient, $rowResult1["ingredient_id"], $rowResult1["ingredient_name"], $rowResult1["ingredient_amount"]);
 			array_push($ingredients, $ingredient);
 		}
 

@@ -56,24 +56,33 @@ angular.module('starter', ['ionic', 'starter.loginController', 'starter.homeCont
     }
   })
 
-    .state('app.recipe_add', {
-      url: '/recipe_add',
-      views: {
-        'main': {
-          templateUrl: 'templates/recipe_add.html'
-        }
+  .state('app.recipe_add', {
+    url: '/recipe_add',
+    views: {
+      'main': {
+        templateUrl: 'templates/recipe_add.html'
       }
-    })
+    }
+  })
+
+  .state('app.recipe_edit_test', {
+    url: '/recipe_edit_test',
+    views: {
+      'main': {
+        templateUrl: 'templates/recipe_edit_test.html'
+      }
+    }
+  })
 
   .state('app.recipe_edit', {
-      url: '/recipe_edit',
-      abstract: true,
-      views: {
-        'main': {
-          templateUrl: 'templates/recipe_edit.html'
-        }
+    url: '/recipe_edit',
+    abstract: true,
+    views: {
+      'main': {
+        templateUrl: 'templates/recipe_edit.html'
       }
-    })
+    }
+  })
 
   .state('app.recipe_edit.info', {
     url: '/info',

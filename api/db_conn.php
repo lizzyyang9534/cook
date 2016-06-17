@@ -40,7 +40,7 @@ function getRecipe($member_id){
 
 function getIngredient($recipe_id){
 	$dbh = connectDB();
-	$sql = "select ingredient_name,ingredient_amount from ingredient where recipe_id = :recipe_id;";
+	$sql = "select * from ingredient where recipe_id = :recipe_id;";
 	$statement = $dbh -> prepare($sql);
 	$statement -> bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
 	$statement -> execute();

@@ -1,0 +1,45 @@
+<ion-view title="Edit Recipe" ng-controller="RecipeEditCtrl">
+  <ion-content>
+    <div class="recipe_edit_image">
+      <div class="recipe_edit_image_text">
+
+        <i class="icon ion-plus font-size-4em"></i>
+        <input type="file" name="datafile" style="opacity: 0">
+        <div>Tap Here To Add A Photo</div>
+        <span style="display:none" ng-model="recipe_edit.recipe_image"></span>
+      </div>
+    </div>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label font-size-18 font-weight-700">Title</span>
+        <input type="text" placeholder="Sushi" ng-model="recipe_edit.recipe_title">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label font-size-18 font-weight-700">
+          Category
+        </div>
+        <select ng-model="recipe_edit.recipe_category">
+          <option ng-repeat="category in category_list track by category.category_id" ng-selected="'{{recipe_edit.recipe_category}}' == '{{category.category_name}}'">{{ category.category_name }}</option>
+        </select>
+      </label>
+      <label class="item item-input">
+        <div class="input-label font-size-18 font-weight-700">
+          Ingredients
+        </div>
+      </label>
+      <label class="item item-input" ng-repeat="ingredient in recipe_edit.recipe_ingredients">
+				<input type="text" ng-model="recipe_edit.recipe_ingredients[$index][1]">
+				<input type="text" style="text-align: right" ng-model="recipe_edit.recipe_ingredients[$index][2]">
+			</label>
+      <label class="item item-input">
+        <div class="input-label font-size-18 font-weight-700">
+          Steps
+        </div>
+      </label>
+      <label class="item item-input">
+  			<textarea rows="10" placeholder="How to make this dish?" ng-model="recipe_edit.recipe_content"></textarea>
+  		</label>
+    </div>
+    <input type="button" value="Save" class="button button-dark login_button font-size-22 margin-bottom-20" ng-click="saveRecipe()">
+  </ion-content>
+</ion-view>

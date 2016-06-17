@@ -4,7 +4,7 @@
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button style="color: grey" class="button button-clear button-icon ion-android-more-vertical" ng-click="popover.show($event)" ng-show="$state.includes('app.recipe')"></button>
-    <button style="color: grey" class="button button-clear" ng-controller="RecipeCtrl" ng-click="saveRecipe()" ng-hide="$state.includes('app.home') == true || $state.includes('app.recipe') == true || $state.includes('app.recipe_add') == true">Save</button>
+    <!--<button style="color: grey" class="button button-clear" ng-controller="RecipeCtrl" ng-click="saveRecipe()" ng-hide="$state.includes('app.home') == true || $state.includes('app.recipe') == true || $state.includes('app.recipe_add') == true">Save</button>-->
   </ion-nav-buttons>
 </ion-nav-bar>
 <ion-nav-view name="main"></ion-nav-view>
@@ -12,8 +12,8 @@
   <ion-popover-view>
     <ion-content>
       <div class="list" ng-click="popover.hide()">
-        <a class="item" ui-sref="app.recipe_edit.info">Edit</a>
-        <a class="item">Delete</a>
+        <a class="item" ui-sref="app.recipe_edit_test">Edit</a>
+        <a class="item" ng-controller="RecipeCtrl" ng-click="deleteRecipe()">Delete</a>
       </div>
     </ion-content>
   </ion-popover-view>
