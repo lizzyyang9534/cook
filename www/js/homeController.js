@@ -73,10 +73,13 @@ angular.module('starter.homeController', [])
         'member_id': user_data.member_id
       })
       .success(function(data, status, headers, config) {
-        $scope.recipe_list = data;
+        $scope.recipe_list = [];
+        for (var prop in data) {
+          $scope.recipe_list.push(data[prop]);
+        }
         recipe_data = data;
         $localstorage.setObject('recipe_data', data);
-        //console.log(data);
+        console.log($scope.recipe_list);
       })
     $scope.$broadcast('scroll.refreshComplete');
   }

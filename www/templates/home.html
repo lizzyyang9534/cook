@@ -4,11 +4,11 @@
     <div class="bar bar-header item-input-inset padding-0-5per">
       <label class="item-input-wrapper ">
         <i class="icon ion-ios-search placeholder-icon"></i>
-        <input type="search" placeholder="Search">
+        <input type="search" placeholder="Search" ng-model="searchText">
       </label>
     </div>
     <div class="list">
-      <a id="recipe{{ recipe.recipe_id }}" class="item item-thumbnail-left home-menu" ng-repeat="recipe in recipe_list" ng-click="getRecipeId()">
+      <a id="recipe{{ recipe.recipe_id }}" class="item item-thumbnail-left home-menu" ng-repeat="recipe in recipe_list | filter:searchText" ng-click="getRecipeId()">
         <img src="{{ recipe.recipe_image }}"/>
         <span style="display:none">{{ recipe.recipe_id }}</span>
         <h2>{{ recipe.recipe_title }}</h2>
