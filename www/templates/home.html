@@ -9,7 +9,7 @@
     </div>
     <div class="list">
       <a id="recipe{{ recipe.recipe_id }}" class="item item-thumbnail-left home-menu" ng-repeat="recipe in recipe_list | filter:searchText" ng-click="getRecipeId()">
-        <img src="{{ recipe.recipe_image }}"/>
+        <img src="http://140.123.175.102:8080/cook/www/{{ recipe.recipe_image }}"/>
         <span style="display:none">{{ recipe.recipe_id }}</span>
         <h2>{{ recipe.recipe_title }}</h2>
         <p>{{ recipe.recipe_content }}</p>
