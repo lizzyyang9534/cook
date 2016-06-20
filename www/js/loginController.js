@@ -42,6 +42,7 @@ angular.module('starter.loginController', [])
             'password': $scope.loginData.password
           })
           .success(function(data, status, headers, config) {
+            console.log(data);
             $scope.user_data = data;
 
             if (data == "error") {
@@ -49,7 +50,7 @@ angular.module('starter.loginController', [])
                 title: "無法登入",
                 template: "帳號或密碼錯誤！"
               });
-            } else if ($scope.user_data.member_id) {
+            } else {
               $localstorage.setObject('user_data', {
                 member_id: $scope.user_data.member_id,
                 email: $scope.user_data.email
@@ -75,18 +76,13 @@ angular.module('starter.loginController', [])
   $scope.insertdata = function() {
     if ($scope.register_form.$valid) {
       // 通過驗證
-      $http.post(serverIP + "/api/register.php", {
+      $http.post(serverIP + "/cook/api/register.php", {
           'email': $scope.register_data.email,
           'password': $scope.register_data.password
         })
         .success(function(data, status, headers, config) {
           //console.log(data);
-          if (data == "exist") {
-            $ionicPopup.alert({
-              title: "註冊失敗",
-              template: "已有相同的帳號！"
-            });
-          } else if (data == "email_exist") {
+          if (data == "email_exist") {
             $ionicPopup.alert({
               title: "註冊失敗",
               template: "此Email已註冊過！"
@@ -125,7 +121,7 @@ angular.module('starter.loginController', [])
         maxWidth: 200,
         showDelay: 0
       });
-      $http.post(serverIP + "/api/forgetPassword.php", {
+      $http.post(serverIP + "/cook/api/forgetPassword.php", {
           'email': $scope.email
         })
         .success(function(data, status, headers, config) {

@@ -7,7 +7,7 @@ angular.module('starter.homeController', [])
   if (user_data.member_id == null)
     $state.go("login");
 
-  recipe_data = $localstorage.getObject('recipe_data');
+  recipe_data = {};
   current_recipe_id = 0;
 
   //api server ip

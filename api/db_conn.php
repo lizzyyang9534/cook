@@ -21,6 +21,15 @@ function getMember($email){
 	return $statement;
 }
 
+function checkEmail($email){
+	$dbh = connectDB();
+	$sql = "select email from member where email = :email";
+	$statement = $dbh -> prepare($sql);
+	$statement -> bindParam(':email', $email, PDO::PARAM_STR);
+	$statement -> execute();
+	return $statement;
+}
+
 function getCategory(){
 	$dbh = connectDB();
 	$sql = "select * from category;";

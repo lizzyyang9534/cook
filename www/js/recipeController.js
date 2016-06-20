@@ -70,7 +70,7 @@ angular.module('starter.recipeController', [])
       })
 
     if ($scope.recipe_edit.recipe_image != null) {
-      $("div.recipe_edit_image").html("<img class=\"recipe_edit_image\" src=\"" + $scope.recipe_edit.recipe_image + "\">");
+      $("div.recipe_edit_image").html("<img class=\"recipe_edit_image\" src=\"" + serverIP + "/cook/www/" + $scope.recipe_edit.recipe_image + "\">");
     }
   }, 100);
 
