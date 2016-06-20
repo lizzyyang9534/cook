@@ -36,13 +36,26 @@ angular.module('starter.recipeController', [])
   }
 
   $scope.deleteRecipe = function() {
-    $http.post(serverIP + "/cook/api/recipe_delete.php", {
-        "recipe_id": current_recipe_id
-      })
-      .success(function(data, status, headers, config) {
-        console.log(data);
-        $state.go("app.home");
-      })
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Delete',
+      template: "Are you sure you want to delete this recipe?",
+      cancelText: 'no',
+      okText: 'yes'
+    });
+
+    confirmPopup.then(function(res) {
+      if (res) {
+        $http.post(serverIP + "/cook/api/recipe_delete.php", {
+            "recipe_id": current_recipe_id
+          })
+          .success(function(data, status, headers, config) {
+            console.log(data);
+            $state.go("app.home");
+          })
+        console.log('You are sure');
+      } else
+        console.log('You are not sure');
+    });
   }
   ionicMaterialInk.displayEffect();
 })
@@ -74,14 +87,21 @@ angular.module('starter.recipeController', [])
     var ingredient_filter = $scope.recipe_edit.recipe_ingredients.filter(function(item) {
       return (item[1] !== "");
     });
+    var category_id = function() {
+      for (i = 0; i < $scope.category_list.length; i++) {
+        if ($scope.category_list[i].category_name == $scope.recipe_edit.recipe_category)
+          return i + 1;
+      }
+    }();
     console.log($scope.recipe_edit);
     console.log(ingredient_filter);
+    console.log(category_id);
 
     $http.post(serverIP + "/cook/api/recipe_edit.php", {
         "member_id": user_data.member_id,
         "recipe_id": $scope.recipe_edit.recipe_id,
         "recipe_title": $scope.recipe_edit.recipe_title,
-        "recipe_category": $scope.recipe_edit.recipe_category,
+        "recipe_category": category_id,
         "recipe_content": $scope.recipe_edit.recipe_content,
         "recipe_image": $scope.recipe_edit.recipe_image,
         "recipe_ingredients": ingredient_filter
@@ -93,7 +113,7 @@ angular.module('starter.recipeController', [])
         new_recipe_data[current_recipe_id].recipe_ingredients = ingredient_filter;
         console.log(new_recipe_data);
         $localstorage.setObject('recipe_data', new_recipe_data);
-        //$state.go("app.home");
+        $state.go("app.home");
       })
   }
   ionicMaterialInk.displayEffect();

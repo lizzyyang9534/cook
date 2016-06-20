@@ -44,7 +44,8 @@ angular.module('starter', ['ionic', 'starter.loginController', 'starter.homeCont
       'main': {
         templateUrl: 'templates/home.html'
       }
-    }
+    },
+    cache: false
   })
 
   .state('app.recipe', {

@@ -7,17 +7,15 @@ $recipe_id = mysql_real_escape_string($data->recipe_id);
 $recipe_title = mysql_real_escape_string($data->recipe_title);
 $recipe_category= mysql_real_escape_string($data->recipe_category);
 $recipe_content = mysql_real_escape_string($data->recipe_content);
-//$recipe_image = mysql_real_escape_string($data->recipe_image);
 $recipe_ingredients = json_decode(json_encode($data->recipe_ingredients), true);
 
 try{
 	$sql = "update recipe set recipe_title = :recipe_title, recipe_category = :recipe_category, recipe_content = :recipe_content where recipe_id = :recipe_id";
 	$statement = $dbh -> prepare($sql);
-  $statement -> bindParam(':recipe_id', $recipe_title, PDO::PARAM_INT);
+  $statement -> bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
 	$statement -> bindParam(':recipe_title', $recipe_title, PDO::PARAM_STR);
 	$statement -> bindParam(':recipe_category', $recipe_category, PDO::PARAM_INT);
 	$statement -> bindParam(':recipe_content', $recipe_content, PDO::PARAM_STR);
-	//$statement -> bindParam(':recipe_image', $recipe_image, PDO::PARAM_STR);
 	$statement -> execute();
 
   $result = getIngredient($recipe_id);

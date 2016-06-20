@@ -31,7 +31,7 @@
       </label>
       <div class="row" ng-repeat="ingredient in recipe_add.recipe_ingredients">
         <div class="col" style="padding-left: 11px">
-          <input type="text" placeholder="Milk?" ng-model="recipe_add.recipe_ingredients[$index].name">
+          <input type="text" placeholder="What Ingredient?" ng-model="recipe_add.recipe_ingredients[$index].name">
         </div>
         <div class="col">
           <input id="ingredient{{$index}}" type="text" placeholder="How Many?" ng-model="recipe_add.recipe_ingredients[$index].amount" ng-focus="checkIfLastRow()">
