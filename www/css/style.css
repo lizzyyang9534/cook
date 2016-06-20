@@ -63,6 +63,9 @@
   font-size: 1.5em;
   text-align: center;
 }
+.recipe_edit_ingredient{
+  width: 45% !important;
+}
 a.home-menu img{
   border-radius: 0 !important;
 }
